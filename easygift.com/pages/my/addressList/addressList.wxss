@@ -1,0 +1,86 @@
+/* pages/my-center/redemption/my-redemption.wxss */
+
+.line {
+	margin: 20rpx 20rpx;
+}
+
+.item_name {
+	font-size: 30rpx;
+	margin-top: 35px;
+	padding-left: 20rpx;
+}
+
+.time_desc {
+	font-size: 24rpx;
+	margin-top: 5px;
+	padding-left: 20rpx;
+}
+.address{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display:flex
+}
+.btn {
+  width: 680rpx;
+  height: 88rpx;
+  background: #F73C41;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 55rpx;
+  left: 35rpx;
+  border-radius: 41.5rpx;
+  font-size: 36rpx;
+  text-align: center;
+  line-height: 88rpx;
+}/* 未选中的背景样式 */
+checkbox .wx-checkbox-input{
+  width: 40rpx; 
+  height: 40rpx; 
+  border-radius: 50%;
+}
+
+/* 选中后的背景样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+  border: none;
+  background: red;
+}
+
+/* 选中后的勾子样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 50%;
+  text-align: center;
+  font-size:32rpx; 
+  color:#FFF; 
+  background: transparent;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+.tab-bar {
+	border: 1px solid #ddd; 
+	background-color: white;
+
+}
+
+.space{
+	height: 100px;
+}
+.nocontent {
+  width: 100%;
+  height: calc(100% - 400rpx);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.nocontent image {
+  padding-left: 80rpx;
+  width: 340rpx;
+  height: 272rpx;
+}

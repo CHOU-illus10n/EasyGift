@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ncepu.eg.mapper.CommunityInfoMapper">
+
+    <select id="list" resultType="com.ncepu.eg.pojo.CommunityInfo">
+
+            select * from community_info
+            <where>
+                <if test="communityName != null">
+                    community_name like '%${communityName}%'
+                </if>
+                 and is_deleted=0
+            </where>
+    </select>
+</mapper>

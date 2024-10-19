@@ -1,0 +1,117 @@
+<view class="top_steps">
+  <van-steps steps="{{ steps }}" active="{{ active }}" active-color="#000000" />
+</view>
+<view style="height:66.8px"></view>
+<!--步骤一-->
+<van-transition show="{{ show_b }}" name="fade-right" custom-class="block" duration="{{entime}}">
+  <view class="b_contain">
+
+    <view class="b_top">
+      <view class="b_content">
+        <!-- 物品名称 -->
+        <view class="b_place">
+          <view class="b_plecebox">
+            <input maxlength="50" placeholder="请输入您的物品名称,增加曝光率" value="{{good}}" bindinput="goodInput" />
+          </view>
+        </view>
+        <!-- 物品描述 -->
+        <view class="b_notes">
+          <view class="b_text">
+            <textarea value="{{describe}}" bindinput="describeInput" maxlength="200" placeholder="请输入物品的详细描述"></textarea>
+            <view class="b_less">{{desc_counts}}/200</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 物品图片 -->
+  <view class="pictures">
+    <view wx:key="index" class="img_item" wx:for="{{tempFilePaths}}" data-index="{{index}}">
+      <image mode="aspectFit" src="{{item}}" />
+      <van-icon bind:click="deletePic" data-index="{{index}}" name="close" />
+    </view>
+    <view bindtap="chooseImage" class="img_item upload-img" hidden="{{!selectPhoto}}">
+      <van-icon name="plus" />
+    </view>
+  </view>
+
+  <view class="b_ccontain">
+
+    <view class="b_card">
+      <!-- 物品价格 -->
+      <view class="b_bar">
+        <view class="b_name">原价(元)</view>
+        <van-stepper value="{{price}}" bind:change="priceChange" min="1" max="10000" decimal-length="1" />
+      </view>
+      <view class="b_border"></view>
+      <!--选择类别的时候-->
+      <view class="b_border"></view>
+      <view class="b_bar">
+        <view class="b_name">选择类别</view>
+        <picker range="{{category}}" range-key="categoryName" value="{{cids}}" bindchange="choCategory">
+          <view class="b_picker">
+            <block wx:if="{{cids!==-1}}">当前选择：{{category[cids].categoryName}}</block>
+            <block wx:if="{{cids==-1}}">请选择类别</block>
+            <image class="right" src="/images/right.png" />
+          </view>
+        </picker>
+      </view>
+      <!-- 选择物品成色 -->
+      <view class="b_border"></view>
+      <view class="b_bar">
+        <view class="b_name">选择物品成色</view>
+        <picker range="{{qualitys}}" range-key="qualityName" value="{{qualityID}}" bindchange="choQuality">
+          <view class="b_picker">
+            <block wx:if="{{qualityID!==-1}}">当前选择：{{qualitys[qualityID].qualityName}}</block>
+            <block wx:if="{{qualityID==-1}}">请选择物品成色</block>
+            <image class="right" src="/images/right.png" />
+          </view>
+        </picker>
+      </view>
+      <!-- 选择购买日期 -->
+      <view class="b_border"></view>
+      <view class="b_bar">
+        <view class="b_name">选择购买日期</view>
+        <view class="b_picker">
+          <date-time-picker value="{{purchaseTime}}" startYear="2019" endYear="2020" bind:change="handleChange1">当前选择：{{purchaseTime}}</date-time-picker>
+        </view>
+      </view>
+
+      <!-- 选择交易日期 -->
+      <view class="b_border"></view>
+      <view class="b_bar">
+        <view class="b_name">选择交易日期</view>
+        <view class="b_picker">
+          <date-time-picker value="{{dealDate}}" startYear="2019" endYear="2020" bind:change="handleChange2">当前选择：{{dealDate}}</date-time-picker>
+        </view>
+      </view>
+      <!-- 输入转赠物品交易地址 -->
+      <view class="b_border"></view>
+      <view class="b_bar">
+        <view class="name">取货地址</view>
+      </view>
+      <block>
+        <view class="b_place">
+          <view class="b_plecebox">
+            <input maxlength="20" placeholder="请输入您的详细地址" value="{{place}}" bindinput="placeInput" />
+          </view>
+        </view>
+      </block>
+      <view class="b_publish" bindtap="publish">马上发布</view>
+    </view>
+    <view style="height: 90px;">
+    </view>
+  </view>
+</van-transition>
+
+
+<!--步骤二-->
+<van-transition show="{{ show_c }}" name="fade-right" custom-class="block" duration="{{entime}}">
+  <view class="c_contain" style="height:{{systeminfo.windowHeight-66.8}}px">
+    <image class="c_success" src="/images/success.png"></image>
+    <view class="c_title">恭喜您 发布成功</view>
+    <view class="c_des">订单的实时状态请在我的主页查看</view>
+    <view class="c_see" bindtap="detail">查看详情</view>
+    <view class="c_again shadow" bindtap="initial">再来一个</view>
+  </view>
+</van-transition>

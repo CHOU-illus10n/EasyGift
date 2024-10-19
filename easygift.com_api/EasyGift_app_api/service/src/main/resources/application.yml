@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: service-xz
+  # 配置mysql数据库连接
+  datasource:
+    username:
+    password:
+    url: jdbc:mysql://:3306/eg_db?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # 配置redis连接
+  redis:
+    host:
+    port:
+    password:
+  # 配置使用环境是dev
+  profiles:
+    active: dev
+  # 统一json返回的数据时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+server:
+  port: 8080
+# 配置mybatis的mapper映射位置
+mybatis-plus:
+  type-aliases-package: com.ncepu.easygift.pojo
+
+logging:
+  level:
+    com.ncepu.easygift.mapper: debug

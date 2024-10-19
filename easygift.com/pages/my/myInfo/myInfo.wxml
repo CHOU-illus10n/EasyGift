@@ -1,0 +1,43 @@
+<form bindsubmit="formSubmit" report-submit="true">
+	<view class="section">
+  <view class="avatar-title">头像：</view>
+  <view>
+    <!-- <van-uploader file-list="{{ avatarUrl }}" bind:after-read="afterRead"  max-count="1"/> -->
+	<button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+		<image class="avatar" src="{{avatarUrl}}"></image>
+	</button> 
+  </view>
+</view>
+
+<van-divider />
+<!--姓名-->  
+<view class="section">
+  <view class="section-title">用户名：</view>
+  <view>
+    <input type="text" name="username" value="{{userInfo.nickName}}" placeholder="请输入姓名" style="color: #808080" bindinput="nameInput"/>
+  </view>
+</view>
+<van-divider /> 
+<view class="section">
+  <view class="section-title">手机号：</view>
+  <view>
+    <input type="text" name="username" value="{{userInfo.phone}}" placeholder="请输入手机号" style="color: #808080"bindinput="phoneInput" maxlength="11"type="number" onkeyup = "value=value.replace(/[^\d]/g,'')"/>
+  </view>
+
+
+</view>
+<van-divider />
+<view class="section">
+  <view class="section-title-co">社区名：</view>
+  <picker  bindchange="choose" value="{{ID}}" range="{{community}}" range-key="text" style="width: 200px;">
+			<view class="community">
+				<block wx:if="{{ID!==-1}}">{{community[ID].text}}</block>
+				<block wx:if="{{ID==-1}}">请选择您所在社区</block>
+				<image class="right" src="/images/right.png" />
+			</view>
+		</picker>
+</view>
+<van-divider />
+<view class="btn" bindtap="submit">保存</view>
+</form>
+<van-dialog id="van-dialog" />

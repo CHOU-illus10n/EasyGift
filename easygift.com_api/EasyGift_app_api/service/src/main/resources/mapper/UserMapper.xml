@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ncepu.easygift.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.ncepu.easygift.pojo.User">
+            <id property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="communityId" column="community_id" jdbcType="VARCHAR"/>
+            <result property="account" column="account" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="userType" column="user_type" jdbcType="TINYINT"/>
+            <result property="openId" column="open_id" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="faceUrl" column="face_url" jdbcType="VARCHAR"/>
+            <result property="points" column="points" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_id,community_id,account,
+        password,user_type,open_id,
+        nick_name,face_url,points,
+        create_time,update_time,is_deleted
+    </sql>
+    <update id="updateInfo" >
+        update user
+        <set>
+            <if test="communityId != null">
+                community_id = #{communityId},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="nickName != null">
+                nick_name = #{nickName},
+            </if>
+            <if test="profileUrl != null">
+                profile_url = #{profileUrl},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+</mapper>

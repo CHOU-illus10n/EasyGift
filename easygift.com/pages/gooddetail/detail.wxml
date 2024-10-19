@@ -1,0 +1,58 @@
+<!--pages/detail/detail.wxml-->
+<wxs src="../../common.wxs" module="morejs" />
+
+<van-dialog id="van-dialog"/>
+<!--物品详情-->
+<view hidden="{{first_title}}">
+
+  <view class="detail_contain">
+      <view class="image">
+        <image src="{{publishInfo.goodImg}}"  bindtap="img" data-src="{{publishInfo.goodImg}}"></image>
+      </view>
+    <view class="info_box">
+      <view class="point">{{publishInfo.goodPoint}} 积分</view>
+      <view class="name">{{publishInfo.goodName}}</view>
+      <view class="desc">{{publishInfo.goodDesc}}</view>
+      <view class="good_count">库存：{{publishInfo.goodCount}}</view>
+    </view>
+
+    <!-- <view class="detail_card">
+      <view class="detail_point">{{publishInfo.goodPoint}} 积分</view>
+    </view>
+    <div class="detail_content">{{publishInfo.goodDesc}}</div> -->
+  </view>
+</view>
+<view style="height: 96rpx;"></view>
+<!--底部导航-->
+<view class="tabbar">
+  <view class="t_card">
+    <image src="/images/tabbar/home.png"></image>
+    <text>首页</text>
+    <button class="t_button" bindtap="home"></button>
+  </view>
+  <view class="t_card" bindtap="my">
+    <image src="/images/tabbar/my.png"></image>
+    <text>我的</text>
+  </view>
+  <view class="buy_box">
+    <view class="buy shadow" bindtap="clickme">兑换</view>   
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="image">
+        <image src="{{publishInfo.goodImg}}"  bindtap="img" data-src="{{publishInfo.goodImg}}"></image>
+      </view>
+      <view class="head">
+        <view class="desc">数量：</view>
+        <van-stepper value="{{num}}" bind:change="onChange" style="padding: 5px;"/>
+      </view>
+      
+      <view class="tabbar">
+
+      <view class="buy shadow" bindtap="buy">兑换</view></view>
+  
+</view>
+
+  </view>
+</view>

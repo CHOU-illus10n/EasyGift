@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://:3306/?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=true
+    username:
+    password:
+  data:
+    redis:
+      host:
+      port:
+      password:
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名和下划线命名的自动转换
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8080
+
+aliyun:
+  oss:
+    endpoint:
+    bucketName:

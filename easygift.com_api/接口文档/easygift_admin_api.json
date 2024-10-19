@@ -1,0 +1,701 @@
+{
+	"info": {
+		"_postman_id": "20a18df5-863e-49e2-9da7-706a73021331",
+		"name": "easygift_admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28841309",
+		"_collection_link": "https://planetary-station-357042.postman.co/workspace/big-event~eaacc958-232b-45eb-b9b5-47659b502ef4/collection/28841309-20a18df5-863e-49e2-9da7-706a73021331?action=share&source=collection_link&creator=28841309"
+	},
+	"item": [
+		{
+			"name": "积分商城管理",
+			"item": [
+				{
+					"name": "查询物品信息根据名",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8080/good?pageSize=1&pageNum=1&goodName=",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"good"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "1"
+								},
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "goodName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取商品订单",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/good/order?pageNum=1&pageSize=4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"good",
+								"order"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "商品订单发送",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderId\":\"1\",\"state\":\"4\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/good/order/send"
+					},
+					"response": []
+				},
+				{
+					"name": "根据商品Id获得商品信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/good/getById?goodId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"good",
+								"getById"
+							],
+							"query": [
+								{
+									"key": "goodId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更改物品状态",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"giftId\":\"1\",\"state\":1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/gift/change"
+					},
+					"response": []
+				},
+				{
+					"name": "更新商品图片",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"goodImg\":\r\n\"https://easygift.oss-cn-beijing.aliyuncs.com/afb41508-9075-4eae-adb6-0cdb7d6f84f1.jpg\",\"goodName\":\"1\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/good"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "管理员接口",
+			"item": [
+				{
+					"name": "更新头像",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"123456\",\r\n    \"userPic\":\"https://easygift.oss-cn-beijing.aliyuncs.com/bebbf448-7fed-45ca-bae1-06915f00e25a.jpg\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/updateAvatar"
+					},
+					"response": []
+				},
+				{
+					"name": "更新密码",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "登录",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "小区管理",
+			"item": [
+				{
+					"name": "小区列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/communityInfo?pageSize=2&pageNum=1&communityName=白云",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"communityInfo"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "communityName",
+									"value": "白云"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增小区",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"communityName\":\"新小区\",\r\n    \"communityAddress\":\"北京\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/communityInfo/add"
+					},
+					"response": []
+				},
+				{
+					"name": "更新小区信息",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"communityId\":\"4\",\r\n    \"communityName\":\"新小区\",\r\n    \"communityAddress\":\"北京\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/communityInfo/update"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户管理",
+			"item": [
+				{
+					"name": "获取一个用户信息",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "获取全体用户信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user?pageNum=1&pageSize=2&nickName=111",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								},
+								{
+									"key": "nickName",
+									"value": "111"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "物品管理",
+			"item": [
+				{
+					"name": "获取物品列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGFpbXMiOnsicGFzc3dvcmQiOiJlMTBhZGMzOTQ5YmE1OWFiYmU1NmUwNTdmMjBmODgzZSIsInVzZXJuYW1lIjoiMTIzNDU2In0sImV4cCI6MTcwMjQzOTEwNX0.HiOzsmlyUVqKVlzL1Cnfq4gwWXy0SIFz9OKklIL5wZU",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/gift"
+					},
+					"response": []
+				},
+				{
+					"name": "根据条件查询列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/gift?pageNum=2&pageSize=1&state=0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"gift"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "2"
+								},
+								{
+									"key": "pageSize",
+									"value": "1"
+								},
+								{
+									"key": "categoryId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "物品信息查询",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "物品订单查询",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/gift/order?pageNum=1&pageSize=3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"gift",
+								"order"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取物品图片",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/gift/img?giftId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"gift",
+								"img"
+							],
+							"query": [
+								{
+									"key": "giftId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "物品状态更新",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/gift/change"
+					},
+					"response": []
+				},
+				{
+					"name": "根据类型获取物品列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJSSk0srkzPTKvULS1OLVLSUUqtKFCyMjQ3MDEytbA0NtRRAol7pihZGekoJefn5pbmZZZUgvm1AFofc4NDAAAA.Lce-20-WdbDm9JJbANjFTLNTvVHqVFVIdJGli_BvwTX1oq2INJW38Yzr7JbfYlR2QNtYQBMj4CORFC34Flph_w",
+								"type": "text"
+							},
+							{
+								"key": "categoryId",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "page",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":\"1\",\r\n    \"userPid\":\"https://easygift.oss-cn-beijing.aliyuncs.com/004de55d-ccfa-4275-a867-8a36cc36005b.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/easygift/giftlist/bycategory"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "分类管理",
+			"item": [
+				{
+					"name": "新增分类",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGFpbXMiOnsicGFzc3dvcmQiOiJlMTBhZGMzOTQ5YmE1OWFiYmU1NmUwNTdmMjBmODgzZSIsInVzZXJuYW1lIjoiMTIzNDU2In0sImV4cCI6MTcwMjQ3ODc0OH0.xPuIqC068Xs2EO3EYukvRTk9EeUsvXDhxR1WePwn-n0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"categoryName\":\"人文\"}"
+						},
+						"url": {
+							"raw": "localhost:8080/category?categoryName=111&categoryAlias=111",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "111"
+								},
+								{
+									"key": "categoryAlias",
+									"value": "111"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取分类列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/category/detail?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取分类详情",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "订单管理",
+			"item": [
+				{
+					"name": "获取物品订单",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/gift/order?pageNum=1&pageSize=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"gift",
+								"order"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得商品订单",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/good/order?pageNum=1&pageSize=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"good",
+								"order"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.addHeader(\"Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGFpbXMiOnsicGFzc3dvcmQiOiJlMTBhZGMzOTQ5YmE1OWFiYmU1NmUwNTdmMjBmODgzZSIsInVzZXJuYW1lIjoiMTIzNDU2In0sImV4cCI6MTcwNDE3MzU1OX0.7dDpghFx9SL1_Jm2Aa7MbdFyBlIrm7Ghpwf-5Bz8g9w\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

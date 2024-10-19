@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ncepu.eg.mapper.GoodOrderMapper">
+
+    <select id="list" resultType="com.ncepu.eg.pojo.GoodOrder">
+        select * from good_order
+        <where>
+            <if test="orderId != null">
+                order_id = #{orderId}
+            </if>
+        </where>
+    </select>
+</mapper>

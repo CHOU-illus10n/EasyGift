@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "6baff362-2466-47ea-93c9-40f494f49bb0",
+		"name": "easygift_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28841309",
+		"_collection_link": "https://planetary-station-357042.postman.co/workspace/big-event~eaacc958-232b-45eb-b9b5-47659b502ef4/collection/28841309-6baff362-2466-47ea-93c9-40f494f49bb0?action=share&source=collection_link&creator=28841309"
+	},
+	"item": [
+		{
+			"name": "积分商城",
+			"item": [
+				{
+					"name": "积分商城物品获取",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "page",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/pointmall/good/list"
+					},
+					"response": []
+				},
+				{
+					"name": "根据分类获取商品",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "page",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "categoryId",
+								"value": "3",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/pointmall/good/bycategory"
+					},
+					"response": []
+				},
+				{
+					"name": "获取商品详情",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "goodId",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/pointmall/good/detail"
+					},
+					"response": []
+				},
+				{
+					"name": "积分兑换",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "goodId",
+								"value": "7",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "goodCount",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/pointmall/good/buy"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户管理",
+			"item": [
+				{
+					"name": "获取用户信息",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "新增收货地址",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJSSk0srkzPTKvULS1OLVLSUUqtKFCyMjQ3MDG0sDA0NddRAol7pihZAZnJ-bm5pXmZJZUgvmEtAONQ489DAAAA.KtuILoFNV57QkDswQM4NC7qJ6hg03SNtXI6diibp-icYyYbd5fGp3MmgKQdnEhsEaYvt4qifQr1MEd9F9VuxOw",
+								"type": "text"
+							},
+							{
+								"key": "receiverName",
+								"value": "'张三'",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "phone",
+								"value": "113",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"receiverPhone\":\"1111\",\r\n\"address\":\"上海市-市辖区-闵行区\",\r\n\"receiverAddress\":\"学校\",\r\n\"receiverName\":\"周\",\r\n\"state\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "182.92.97.61:9090/user/shopping/address"
+					},
+					"response": []
+				},
+				{
+					"name": "更新用户信息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJSSk0srkzPTKvULS1OLVLSUUqtKFCyMjQ3MLY0MjEyNNBRAol7pgDFdJSS83NzS_MySyrB_FoAgzzmvkMAAAA.2akFFNNS1eaysUbU8ZxoqMn50MwBPKkJXSpbt4Qh7Th9p6AqIsdWpF5XhkafWmVkvFrYy_3K2OKPxvpdV-mxRQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profileUrl\":\"https://easygift.oss-cn-beijing.aliyuncs.com/bebbf448-7fed-45ca-bae1-06915f00e25a.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/easygift/update"
+					},
+					"response": []
+				},
+				{
+					"name": "获取收货地址列表",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "新增收货地址",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "shoppingId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8080/user/shopping/update"
+					},
+					"response": []
+				},
+				{
+					"name": "获取小区信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/easygift/community/all"
+					},
+					"response": []
+				},
+				{
+					"name": "用户注册接口",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"openId\": \"your_openid\",\r\n  \"nickName\": \"test_user\",\r\n  \"phone\": \"123456789\",\r\n  \"communityId\": 1,\r\n  \"faceUrl\": \"https://example.com/face.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/easygift/register"
+					},
+					"response": []
+				},
+				{
+					"name": "获取用户的信息，用于头像",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWKi5NUrJSSk0srkzPTKvULS1OLVLSUUqtKFCyMjQ3MDYwMDQ1tNRRAol7pgDFdJSS83NzS_MySyrB_FoAk1rebUMAAAA.tdMUZjQDpEkChUOz514O27MsPJGu-pXY69lCPxAYEeaDFQLyBAfJM5RAo3tNWWRE5KIyPolKQb_RW1N1bV48cw",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/easygift/userinfo"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "订单管理",
+			"item": [
+				{
+					"name": "获取订单信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "page",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/user/good/order/list"
+					},
+					"response": []
+				},
+				{
+					"name": "确认取消收货",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAA_6tWKi5NUrJSSk0srkzPTKvULS1OLVLSUUqtKFCyMjQ3MDEyNDQwNtZRAol7pihZGekoJefn5pbmZZZUgviGtQC6Io3eQwAAAA.Rj1po-u_QWMTiHM_ZhrsRL-tw7NnGZLZ2vIRnyeyKpbiJoPkIplgCNEkJWTlMxRAiLnITyvdiDyH6wDfUDVNTw",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\":\"-1\",\r\n    \"orderId\":\"13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "182.92.97.61:9090/user/good/order/change"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户交易管理",
+			"item": [
+				{
+					"name": "获取轮播图片",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "获取转赠物品列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWKi5NUrJSSk0srkzPTKvULS1OLVLSUUqtKFCyMjQ3MDYwMDQ1tNRRAol7pgDFdJSS83NzS_MySyrB_FoAk1rebUMAAAA.tdMUZjQDpEkChUOz514O27MsPJGu-pXY69lCPxAYEeaDFQLyBAfJM5RAo3tNWWRE5KIyPolKQb_RW1N1bV48cw",
+								"type": "text"
+							},
+							{
+								"key": "page",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/easygift/giftlist"
+					},
+					"response": []
+				},
+				{
+					"name": "获取转增物品类别",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "用户上传转赠物品",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWKi5NUrJSSk0srkzPTKvULS1OLVLSUUqtKFCyMjQ3MDYwMDQ1tNRRAol7pgDFdJSS83NzS_MySyrB_FoAk1rebUMAAAA.tdMUZjQDpEkChUOz514O27MsPJGu-pXY69lCPxAYEeaDFQLyBAfJM5RAo3tNWWRE5KIyPolKQb_RW1N1bV48cw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dealAddress\": \"华北电力大学-8B-428\",\r\n  \"dealTime\": \"2023-12-24\",\r\n  \"description\": \"这只是一个普普通通的四六级耳机，没有任何的用处\",\r\n  \"giftImgUrls\": [\r\n    \"https://easygift.oss-cn-beijing.aliyuncs.com/2023/…xvXf1aHk4AHHe6f528a1e85f416ded6ac688509a7c6a.jpeg\",\r\n    \"https://easygift.oss-cn-beijing.aliyuncs.com/2023/…es2aXxveNDcSsc8a8ffa343e04789f98dcc3331a77637.jpg\",\r\n    \"https://easygift.oss-cn-beijing.aliyuncs.com/2023/…dSUZ5V3gbuQcY918edac74c583ce0dc817c1a172714b3.jpg\"\r\n  ],\r\n  \"giftName\": \"艾本四六级耳机\",\r\n  \"giftPrice\": \"49.8\",\r\n  \"giftQuality\": \"1\",\r\n  \"giftTypeId\": 2,\r\n  \"purchaseTime\": \"2023-10-18\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/easygift/submit"
+					},
+					"response": []
+				},
+				{
+					"name": "获取详情页信息（不包含图片）",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "giftId",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/easygift/publishinfo"
+					},
+					"response": []
+				},
+				{
+					"name": "获取物品详情页（图片）",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "giftId",
+								"value": "6",
+								"type": "text"
+							}
+						],
+						"url": "localhost:8080/easygift/publishinfoImg"
+					},
+					"response": []
+				},
+				{
+					"name": "测试搜索功能",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

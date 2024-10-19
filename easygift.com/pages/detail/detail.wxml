@@ -1,0 +1,138 @@
+<!--pages/detail/detail.wxml-->
+<wxs src="../../common.wxs" module="morejs" />
+<view class="top_contain">
+  <!--轮播图-->
+  <swiper style='height:{{Hei}}' indicator-dots='true' autoplay='true' interval='5000' duration='500' circular="true">
+    <block wx:for="{{publishImg}}" wx:key="index">
+      <swiper-item class="image">
+        <image src='{{item.giftImgUrl}}' mode="widthFix" bindload='imgH' bindtap="img" data-src="{{item.giftImgUrl}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="title text-cut">{{publishInfo.giftName}}</view>
+</view>
+<view class="blank"></view>
+<view class="center_contain">
+  <view bindtap="changeTitle" data-id="{{ true }}" class="c_title {{first_title?'title_on':''}}">发布信息</view>
+  <view bindtap="changeTitle" data-id="{{ false }}" class="c_title {{first_title?'':'title_on'}}">物品详情</view>
+</view>
+<!--发布信息-->
+<view hidden="{{!first_title}}">
+  <view class="user_box">
+    <image lazy-load src="{{publishInfo.profileUrl}}"></image>
+    <view class="des_box">
+      <view class="user_name">{{publishInfo.nickName}}</view>
+      <view class="local_box">
+        <image src="/images/local.png"></image>
+        <view>{{publishInfo.communityName}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="time_box">
+    <view class="kind">{{publishInfo.categoryName}}类物品</view>
+    <view class="time">发布于{{publishInfo.createTime}}</view>
+  </view>
+  <view class="deliver_box">
+    <view class="deliver_first">
+      <view class="deliver_title">取货地点：</view>
+    </view>
+    <view class="deliver_place">{{publishInfo.dealAddress}}</view>
+  </view>
+  <view class="deliver_box">
+    <view class="deliver_first">
+      <view class="deliver_title">原价：</view>
+    </view>
+    <view class="deliver_place">￥{{publishInfo.giftOriginPrice}}元</view>
+  </view>
+  <view class="deliver_box">
+    <view class="deliver_first">
+      <view class="deliver_title">购买时间：</view>
+    </view>
+    <view class="deliver_place">{{publishInfo.purchaseTime}}</view>
+  </view>
+  <view class="deliver_box">
+    <view class="deliver_first">
+      <view class="deliver_title">成色：</view>
+    </view>
+    <view class="deliver_place">{{(publishInfo.giftQuality == 0) ? "九九新" :
+      (publishInfo.giftQuality == 1) ? "九五新" :
+      (publishInfo.giftQuality == 2) ? "九成新" :
+      (publishInfo.giftQuality == 3) ? "八成新" :
+      "以下"}}</view>
+
+  </view>
+  <view class="b_ccontain">
+    <!-- 表单 -->
+    <view style="text-align:center;font-size:14px;color:#ccc;margin-top:20px;">以下是留言内容</view>
+    <view wx:for="{{messageList}}" wx:key="messageId" class="liuyanview">
+      <view class="headimg">
+        <image src="{{item.profileUrl}}"></image>
+      </view>
+      <view class="nickname_liuyantext">
+        <view class="nickname">
+          {{item.nickName}}
+          <view class="time">{{item.createTime}}</view>
+        </view>
+        <view class="text">{{item.content}}</view>
+        <view class="send" wx:if="{{curUserId==publishInfo.openId&&publishInfo.state==1}}" bindtap="send" data-custom-value="{{item.userId}}">
+          <image src="/images/send.png" class="send-icon"></image>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+<!--物品详情-->
+<view hidden="{{first_title}}">
+  <view class="detail_contain">
+    <view class="detail_card">
+      <view class="detail_title">物品描述</view>
+      <view class="detail_content">{{publishInfo.description}}</view>
+    </view>
+    <!--物品详情预览-->
+    <block class="image" wx:for="{{publishImg}}" wx:key="index">
+      <view>
+        <image src="{{item.giftImgUrl}}" mode="widthFix" bindtap="img" data-src="{{item.giftImgUrl}}" style="display: block; margin: 0 auto; margin-bottom: 7px;"></image>
+      </view>
+    </block>
+  </view>
+</view>
+<view style="height: 96rpx;"></view>
+<!--主人视图的底部导航-->
+<view class="tabbar" wx:if="{{curUserId==publishInfo.openId}}">
+  <view class="t_card">
+    <image src="/images/tabbar/home.png"></image>
+    <text>首页</text>
+    <button class="t_button" bindtap="home"></button>
+  </view>
+  <view class="t_card" bindtap="my">
+    <image src="/images/tabbar/my.png"></image>
+    <text>我的</text>
+  </view>
+  <view class="buy_box">
+    <view class="buy shadow" >{{publishInfo.state==2?'已下架':(publishInfo.state==1?'已上架':(publishInfo.state==0?'审核中':'赠送中'))}}</view>
+  </view>
+</view>
+<!-- 用户视图的底部导航(未赠送) -->
+<view class="tabbar" wx:if="{{curUserId!=publishInfo.openId&&(publishInfo.state==1||publishInfo.state==0)}}">
+  <input type="text" name="messageContent" placeholder='夕殿萤飞思悄然' class="input-style" value="{{content}}" bindinput="messageInput" />
+  <view class="buy_box2">
+    <view class="buy shadow" bindtap="formSubmit">{{publishInfo.state==2?'已下架':(publishInfo.state==1||publishInfo.state==0?'留言':'已赠送')}}</view>
+  </view>
+</view>
+<!-- 用户视图的底部导航(已赠送) -->
+<view class="tabbar" wx:if="{{curUserId!=publishInfo.openId&&publishInfo.state==3}}">
+  <view class="t_card">
+    <image src="/images/tabbar/home.png"></image>
+    <text>首页</text>
+    <button class="t_button" bindtap="home"></button>
+  </view>
+  <view class="t_card" bindtap="my">
+    <image src="/images/tabbar/my.png"></image>
+    <text>我的</text>
+  </view>
+  <view class="buy_box">
+    <view class="buy shadow" >{{publishInfo.state==2?'已下架':((publishInfo.state==3)||(publishInfo.state==0)?'留言':'赠送中')}}</view>
+  </view>
+</view>

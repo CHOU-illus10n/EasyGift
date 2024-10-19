@@ -1,0 +1,109 @@
+.message_item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 10px;
+  border: 1px solid rgb(119, 109, 109); /* 灰色边框 */
+  padding: 10px; /* 内边距，可根据需要调整 */
+  margin-bottom: 10px; /* 底部留白，可根据需要调整 */
+}
+
+
+.back {
+  background-color: white;
+  padding: 10rpx;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main_title {
+  font-weight: 700;
+}
+
+.main_time {
+  font-weight: 200;
+  font-size: 25rpx;
+  color: #999;
+}
+
+.message_detail {
+  height: 80rpx;
+  font-size: 28rpx;
+  text-indent: 1em; /* 设置首行缩进距离，可以根据需要调整 */
+  text-align: justify; /* 段落对齐 */
+}
+
+
+.message_operation {
+  position: absolute;
+  right: 10rpx;
+  bottom: 0;
+  color: #999;
+}
+
+.goTop {
+height: 80rpx;
+width: 80rpx;
+position: fixed;
+bottom: 50rpx;
+right: 30rpx;
+}
+.nav-wrap {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: #fff;
+  color: #000;
+  z-index: 9999999;
+}
+.nav-title {
+  position: absolute;
+  text-align: center;
+  max-width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 18px;
+  color: #2c2b2b;
+  font-weight: 600;
+  font-family: Arial, sans-serif; 
+}
+.container0 {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px;
+  flex-wrap: wrap;
+  background-color: rgb(241, 241, 241); /* 浅灰色背景 */
+  justify-content: space-between; /* 元素间均匀分布 */
+}
+.blank_text {
+  padding-top: 40rpx;
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+  color: #c6c6c8;
+}
+.nocontent {
+  width: 100%;
+  height: calc(100% - 400rpx);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.nocontent image {
+  padding-left: 80rpx;
+  width: 340rpx;
+  height: 272rpx;
+}

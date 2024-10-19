@@ -1,0 +1,36 @@
+<!--pages/my-center/redemption/my-redemption.wxml-->
+<!-- 我兑换的物品呈现 -->
+<view class="my_redemption">
+	<block wx:for="{{goodOrder}}" wx:key="index" >
+		<van-card
+			class="my_card"
+			desc-class="time_desc"
+			
+			title="{{item.goodName}}"
+			
+			desc="兑换时间: {{item.createTime}}        状态: {{item.state}}"
+			title-class="item_name"
+		>	<view slot="footer">
+		<view class="address" data-id="{{item.orderId}}">
+
+			<!-- <van-switch checked="{{ checked[item.shoppingId] }}" size="20px"  bind:change="onChange" data-itemindex="{{index}}" /> -->
+			<!-- <checkbox checked="{{item.state==1?true:false}}" disabled="{{item.state==1?true:false}}" bindtap="change" id="{{item.shoppingId}}"	/> -->
+			<van-button type="warning" size="mini" round bind:click="confirm" data-id="{{item.orderId}}" data-state="{{item.state}}"
+			disabled="{{((item.state=='交易完成')||(item.state=='已取消')||(item.state=='待发货'))?true:false}}"
+			>确认收货</van-button>
+			<van-button type="warning" size="mini" round 
+			disabled="{{((item.state=='交易完成')||(item.state=='已取消'))?true:false}}"
+			data-id="{{item.orderId}}"
+			bind:click="cancel"
+			>取消订单</van-button>
+		</view>
+	
+  </view>
+		</van-card>
+
+		<view class="line"></view>
+	</block>
+</view>
+
+<van-dialog id="van-dialog" />
+<view class="space"></view>

@@ -1,0 +1,56 @@
+<!--pages/my/my.wxml-->
+<view class="top_box">
+	<view class="top_2">
+		<view class="avator">
+			<image class="image_radius" wx:if="{{userinfo}}" src="{{userinfo.profileUrl}}" />
+			<image wx:if="{{!userinfo}}" src="/images/avator.png"></image>
+		</view>
+	</view>
+	<view class="top_1">
+		<view wx:if="{{!userinfo}}" class="top_1_1" bindtap="go" data-go="/pages/login/login">点击登录</view>
+		<view wx:if="{{userinfo}}" class="top_1_1">
+			<text class="username">{{userinfo.nickName}}</text>
+		</view>
+		<view class="top_1_2" wx:if="{{!userinfo}}">一秒登录，体验所有功能</view>
+		<text class="my_point" wx:if="{{userinfo}}" > 积分：{{userinfo.points}}</text>
+	</view>
+</view>
+<view class="center_box">
+	<view class="center_1" bindtap="goIPublish" >
+		<image src="/images/history.png"></image>
+		<view>我的发布</view>
+	</view>
+	<view class="center_1" bindtap="goISend" >
+		<image src="/images/mysend.png"></image>
+		<view>我的送出</view>
+	</view>
+	<view class="center_1" bindtap="goIReceive" >
+		<image src="/images/finish.png"></image>
+		<view>我领到的</view>
+	</view>
+  <view class="center_1" bindtap="goIGet">
+		<image src="/images/exchange.png"></image>
+		<view>我兑换的</view>
+	</view>
+</view>
+<view class="blank"></view>
+<view class="bottom_box">
+	<view class="bottom_card" bindtap="goMyInfo" >
+		<view class="bottom_1">
+			<image src="/images/userinfo.png"></image>
+			<view>个人信息</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+
+	<view class="bottom_card" bindtap="goMyAddress">
+		<view class="bottom_1">
+			<image src="/images/address.png"></image>
+			<view>收货地址</view>
+		</view>
+		<image src="/images/go.png"></image>
+	</view>
+
+	
+	
+</view>

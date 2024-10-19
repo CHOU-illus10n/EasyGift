@@ -1,0 +1,39 @@
+<!--pages/my-center/redemption/my-redemption.wxml-->
+<!-- 我兑换的物品呈现 -->
+<view class="my_redemption" wx:if="{{shoppingInfo.length>0}}">
+	<block wx:for="{{shoppingInfo}}" wx:key="index" >
+		<van-card
+			class="my_card"
+			desc-class="time_desc"
+		
+			title="{{item.receiverProvince}}-{{item.receiverCity}}-{{item.receiverDistrict}}"
+			
+			desc=" {{item.receiverAddress}} "
+			title-class="item_name"
+		>
+		<view slot="footer">
+		<view class="address">
+			<view>默认地址</view>
+			<!-- <van-switch checked="{{ checked[item.shoppingId] }}" size="20px"  bind:change="onChange" data-itemindex="{{index}}" /> -->
+			<checkbox checked="{{item.state==1?true:false}}" disabled="{{item.state==1?true:false}}" bindtap="change" id="{{item.shoppingId}}"	/>
+		</view>
+	
+  </view>
+		</van-card>
+		<view class="line"></view>
+	</block>
+</view>
+<view class="nocontent" wx:if="{{shoppingInfo.length==0}}">
+  <image lazy-load src="/images/blank.png"></image>
+  <view class="blank_text">这里空空如也~</view>
+</view>
+<view class="space"></view>
+<van-goods-action>
+  <van-goods-action-button text="新增收货地址" bind:click="goMyAddress"  />
+</van-goods-action>
+
+
+
+	<!-- <view class="btn" bindtap="goMyAddress">新增收货地址</view> -->
+  
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ncepu.easygift.mapper.GiftInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.ncepu.easygift.pojo.GiftInfo">
+            <id property="giftId" column="gift_id" jdbcType="VARCHAR"/>
+            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="giftName" column="gift_name" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="giftTypeId" column="gift_type_id" jdbcType="VARCHAR"/>
+            <result property="giftImgUrl" column="gift_img_url" jdbcType="VARCHAR"/>
+            <result property="giftPrice" column="gift_price" jdbcType="DOUBLE"/>
+            <result property="purchaseTime" column="purchase_time" jdbcType="DATE"/>
+            <result property="dealTime" column="deal_time" jdbcType="TIMESTAMP"/>
+            <result property="giftQuality" column="gift_quality" jdbcType="TINYINT"/>
+            <result property="dealAddress" column="deal_address" jdbcType="VARCHAR"/>
+            <result property="failureType" column="failure_type" jdbcType="TINYINT"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        gift_id,user_id,gift_name,
+        description,gift_type_id,gift_img_url,
+        gift_price,purchase_time,deal_time,
+        gift_quality,deal_address,failure_type,
+        status,create_time,update_time,
+        is_deleted
+    </sql>
+    <select id="getGiftList" resultType="com.ncepu.easygift.pojo.GiftInfo">
+        select
+               gift_info.gift_id,
+               gift_info.user_id,
+               gift_info.gift_name,
+               gift_info.description,
+               gift_info.gift_type_id,
+               gift_info.gift_img_url,
+               gift_info.gift_price,
+               gift_info.purchase_time,
+               gift_info.deal_time,
+               gift_info.gift_quality,
+               gift_info.deal_address,
+               gift_info.failure_type,
+               gift_info.status,
+               gift_info.create_time,
+               gift_info.update_time,
+               gift_info.is_deleted
+        from gift_info join user_info on gift_info.user_id = user_info.user_id
+        <where>
+            <trim prefixOverrides="AND">
+                <if test="ew!=null and ew.sqlSegment!=null and ew.sqlSegment != ''">
+                    AND ${ew.sqlSegment}
+                </if>
+                <if test="communityId!=null">
+                    AND user_info.community_id = #{communityId}
+                </if>
+            </trim>
+        </where>
+    </select>
+</mapper>

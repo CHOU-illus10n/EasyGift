@@ -1,0 +1,29 @@
+<view class="card_grid" wx:if="{{list.length>0}}">
+  <block wx:for="{{list}}" wx:key="giftid">
+    <view class="list_box" bindtap="detail" data-id="{{item.giftId}}">
+      <image lazy-load class="list_poster" src="{{item.giftImgUrl}}"></image>
+      <view class="list_content">
+        <view class="list_word">
+          <view class="list_name text-cut">{{item.giftName}}
+          </view>
+          <view class="list_descrip text-cut11">送给了用户：{{item.receiverName}}
+          </view>
+          
+          <view class="list_descrip text-cut">Ta的手机号是：{{item.phone}}
+          </view>
+          <view class="list_descrip text-cut11">Ta会在：{{item.dealTime}}上门取货
+          </view>
+          <view class="list_descrip text-cut">您获得了{{item.incrPoint}}积分
+          </view>
+        </view>
+      </view>
+    </view>
+    
+  </block>
+  <view style="height: 40px;">
+  </view>
+</view>
+<view class="nocontent" wx:if="{{list.length==0}}">
+  <image lazy-load src="/images/blank.png"></image>
+  <view class="blank_text">这里空空如也~</view>
+</view>

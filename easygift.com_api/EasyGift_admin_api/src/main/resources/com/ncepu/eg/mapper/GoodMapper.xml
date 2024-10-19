@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ncepu.eg.mapper.GoodMapper">
+
+
+    <select id="list" resultType="com.ncepu.eg.pojo.GoodInfo">
+        select * from good_info
+        <where>
+            <if test="goodName != null">
+                good_name = #{goodName}
+            </if>
+        </where>
+    </select>
+    <select id="getGoodInfo" resultType="com.ncepu.eg.pojo.GoodInfo">
+        select * from good_info
+        <where>
+            <if test="goodId != null">
+                good_id = #{id}
+            </if>
+        </where>
+    </select>
+</mapper>

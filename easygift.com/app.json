@@ -1,0 +1,89 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/notice/notice",
+    "pages/my/my",
+    "pages/pointmall/pointmall",
+    "pages/publish/publish",
+    "pages/login/login",
+    "components/date-time-picker/date-time-picker",
+    "pages/detail/detail",
+    "pages/search/search",
+    "pages/gooddetail/detail",
+    "pages/my/IPublish/IPublish",
+    "pages/my/IReceive/IReceive",
+    "pages/my/ISend/ISend",
+    "pages/my/IGet/my-redemption",
+    "pages/my/myInfo/myInfo",
+    "pages/my/myAddress/myAddress",
+    "pages/my/addressList/addressList"
+    
+  ],
+  "window": {
+    "backgroundColor": "#fbbd08",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fbbd08",
+    "navigationBarTitleText": "易赠",
+    "navigationBarTextStyle": "white"
+  },
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom": true,
+    "color": "#afafaf",
+    "selectedColor": "#0099f6",
+    "backgroundColor": "#F7F8F8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/pointmall/pointmall",
+        "text": "积分商城"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/notice/notice",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "custom-tab-bar": "/custom-tab-bar/index",
+    "date-time-picker": "/components/date-time-picker/date-time-picker",
+    "van-date-picker": "/miniprogram_npm/@vant/weapp/datetime-picker/index",
+    "van-steps": "@vant/weapp/steps/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "canvasdrawer": "/components/canvasdrawer/canvasdrawer",
+    "tips": "components/add_tips/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
+  }
+}

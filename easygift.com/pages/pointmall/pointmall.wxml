@@ -1,0 +1,93 @@
+<!--pages/index/index.wxml-->
+<wxs src="../../common.wxs" module="morejs" />
+
+<!-- 轮播图 -->
+<div class="swiper-container">
+  <div class="swiper">
+    <swiper class="banner" indicator-dots autoplay indicator-active-color="#fbbd08" circular>
+      <block wx:for="{{banner}}" wx:key="id">
+        <swiper-item>
+          <image src="{{item}}" mode="aspectFill" class="banner_image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </div>
+  <div class="swiper">
+    <swiper class="banner" indicator-dots autoplay indicator-active-color="#fbbd08" circular>
+      <block wx:for="{{banner}}" wx:key="id">
+        <swiper-item>
+          <image src="{{item}}" mode="aspectFill" class="banner_image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </div>
+</div>
+
+
+<view class="space"></view>
+<!--分类导航-->
+<view class="{{scrollTop>310?'nofixed':''}}">
+</view>
+<view class="kind_contain {{scrollTop>310?'fixed':''}}">
+  <view class="nav-item {{0==categoryCur?'tab-on':''}}" bindtap="selectAll">
+    <view class="nav-text">全部</view>
+  </view>
+  <scroll-view scroll-x class="nav" scroll-with-animation scroll-left="{{scrollLeft}}rpx">
+    <view class="nav-item" wx:for="{{category}}" wx:key="id" bindtap="categorySelect" data-id="{{index}}">
+      <view class="nav-text {{index==categoryCur-1?'tab-on':''}}">{{item.categoryName}}</view>
+    </view>
+  </scroll-view>
+  <view class="kind_img" bindtap="showlist">
+    <image lazy-load src="{{showList?'/images/l_down.png':'/images/l_right.png'}}" />
+  </view>
+  <view class="kindlist_box" wx:if="{{showList}}">
+    <view class="kindlist_card">
+      <view class="list_grid">
+        <block wx:for="{{category}}" wx:key="id">
+          <view class="list_one" bindtap="categorySelect" data-id="{{index}}" data-class="{{item.id}}">
+            <view class="{{index==collegeCur-1?'list-on':''}}">{{item.categoryName}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+<!--宫格显示-->
+<view hidden="{{!iscard}}">
+  <view class="card_grid" wx:if="{{list.length>0}}">
+    <block wx:for="{{list}}" wx:key="giftid">
+      <view class="card_one" bindtap="detail" data-id="{{item.goodId}}">
+        <image lazy-load class="card_poster" src="{{item.goodImg}}"></image>
+        <view class="card_title text-cut">{{item.goodName}}
+        </view>
+        <view class="card_between">
+          <view class="list_title text-cut">{{item.goodPoint}}积分
+          </view>
+          <image lazy-load class="card_buy" src="/images/go.png"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view style="height: 40px;">
+  </view>
+</view>
+<!--无内容显示-->
+<view class="nocontent" wx:if="{{list.length==0}}">
+  <image lazy-load src="/images/blank.png"></image>
+  <view class="blank_text">这里空空如也~</view>
+</view>
+
+<block wx:if="{{list.length>10}}">
+  <import src="/common.wxml" />
+  <template is="loadmore" data="{{nomore}}" />
+</block>
+<van-transition show="{{ scrollTop>500 }}" custom-class="block" duration="600">
+  <view class="totop" bindtap="gotop">
+    <image lazy-load src="/images/top.png"></image>
+  </view>
+</van-transition>
+<!--首次进入提示收藏小程序-->
+<tips />
+<welcome />
+
+<view style="height: 50px;"></view>

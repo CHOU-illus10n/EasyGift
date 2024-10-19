@@ -1,0 +1,26 @@
+<view class='nav-wrap' style='height: {{height*2+40}}px;'>
+  <!-- // 导航栏 中间的标题 -->
+  <view class='nav-title' style='line-height: {{height*2 + 38}}px;'>消息</view>
+</view>
+<view wx:if="{{messageList.length>0}}">
+  <view class='container' style='margin-top: {{height*2+50}}px'>
+    <block wx:for="{{messageList}}" wx:key="index">
+      <view class="message_item">
+        <view class="back">
+          <view class="title">
+            <view class="main_title">通知</view>
+            <view class="main_time">{{item.createTime}}</view>
+          </view>
+          <view class="message_detail">{{item.detail}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view style="height: 40px;">
+  </view>
+</view>
+<view class="nocontent" wx:if="{{messageList.length==0}}">
+  <image lazy-load src="/images/blank.png"></image>
+  <view class="blank_text">这里空空如也~</view>
+</view>

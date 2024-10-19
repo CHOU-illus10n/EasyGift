@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ncepu.easygift.mapper.CommunityInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.ncepu.easygift.pojo.CommunityInfo">
+            <id property="communityId" column="community_id" jdbcType="VARCHAR"/>
+            <result property="communityName" column="community_name" jdbcType="VARCHAR"/>
+            <result property="communityAddress" column="community_address" jdbcType="VARCHAR"/>
+            <result property="communityPicUrl" column="community_pic_url" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        community_id,community_name,community_address,
+        community_pic_url,create_time,update_time,
+        is_deleted
+    </sql>
+</mapper>

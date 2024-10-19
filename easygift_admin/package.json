@@ -1,0 +1,30 @@
+{
+  "name": "big-event",
+  "version": "0.0.0",
+  "private": true,
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@rollup/plugin-alias": "^5.1.0",
+    "@vueup/vue-quill": "^1.2.0",
+    "axios": "^1.5.1",
+    "element-plus": "^2.4.1",
+    "pinia": "^2.1.7",
+    "pinia-persistedstate-plugin": "^0.1.0",
+    "three": "^0.126.1",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.4.0",
+    "sass": "^1.69.4",
+    "vite": "^4.4.11"
+  }
+}

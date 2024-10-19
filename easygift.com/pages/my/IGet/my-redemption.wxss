@@ -1,0 +1,27 @@
+/* pages/my-center/redemption/my-redemption.wxss */
+
+.line {
+	margin: 20rpx 20rpx;
+}
+
+.item_name {
+	font-size: 30rpx;
+	margin-top: 35px;
+	padding-left: 20rpx;
+}
+
+.time_desc {
+	font-size: 24rpx;
+	margin-top: 5px;
+	padding-left: 20rpx;
+}
+.address{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display:flex
+}
+
+.space{
+	height: 60px;
+}

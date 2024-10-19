@@ -1,0 +1,27 @@
+
+<view class="card_grid" wx:if="{{list.length>0}}">
+  <block wx:for="{{list}}" wx:key="giftid">
+    <view class="list_box" bindtap="detail" data-id="{{item.giftId}}">
+      <image lazy-load class="list_poster" src="{{item.giftImgUrl}}"></image>
+      <view class="list_content">
+        <view class="list_word">
+          <view class="list_name text-cut">{{item.giftName}}
+          </view>
+          <view class="list_descrip text-cut">商品描述：{{item.description}}
+          </view>
+          <view class="list_descrip text-cut">交易时间：{{item.dealTime}}
+          </view>
+          <view class="list_descrip text-cut">交易地点：{{item.dealAddress}}
+          </view>
+          <image lazy-load class="card_buy" src="/images/go.png"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view style="height: 40px;">
+  </view>
+</view>
+<view class="nocontent" wx:if="{{list.length==0}}">
+  <image lazy-load src="/images/blank.png"></image>
+  <view class="blank_text">这里空空如也~</view>
+</view>
